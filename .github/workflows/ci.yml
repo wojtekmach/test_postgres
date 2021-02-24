@@ -40,3 +40,6 @@ jobs:
     steps:
       - run: psql postgresql://postgres:postgres@localhost -c "SELECT version()"
       - run: psql -c "SELECT version()"
+        env:
+          PGUSER: postgres
+          PGPASSWORD: postgres
