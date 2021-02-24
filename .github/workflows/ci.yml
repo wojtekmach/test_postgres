@@ -22,7 +22,7 @@ jobs:
         ports:
           - 5432:5432
         volumes:
-          - /var/run/postgresql
+          - /var/run/postgresql:/var/run/postgresql
 
     strategy:
       fail-fast: false
