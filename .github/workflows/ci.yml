@@ -30,4 +30,4 @@ jobs:
 
     steps:
       - run: uname -a
-      - run: psql -h localhost -c "SELECT now()"
+      - run: psql postgresql://postgres:postgres@localhost -c "SELECT now()"
