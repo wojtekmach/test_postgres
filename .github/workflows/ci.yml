@@ -40,4 +40,4 @@ jobs:
           - 13
 
     steps:
-      - run: psql postgresql://postgres:postgres@localhost -c "SELECT now()"
+      - run: psql postgresql://postgres:postgres@localhost -c "SELECT version()"
