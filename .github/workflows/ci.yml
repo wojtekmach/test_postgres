@@ -6,5 +6,28 @@ on:
 jobs:
   test:
     runs-on: ubuntu-16.04
+
+    services:
+      pg:
+        image: postgres:${{ matrix.pg }}
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    strategy:
+      fail-fast: false
+      matrix:
+        pg:
+          - 13
+
     steps:
       - run: uname -a
+      - run: psql -h localhost -c "SELECT now()"
