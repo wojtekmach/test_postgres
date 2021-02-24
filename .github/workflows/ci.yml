@@ -21,15 +21,13 @@ jobs:
           --health-retries 10
         ports:
           - 5432:5432
+        volumes:
+          - /var/run/postgresql
 
     strategy:
       fail-fast: false
       matrix:
         pg:
-          - 8.4
-          - 9.0
-          - 9.1
-          - 9.2
           - 9.3
           - 9.4
           - 9.5
@@ -41,3 +39,4 @@ jobs:
 
     steps:
       - run: psql postgresql://postgres:postgres@localhost -c "SELECT version()"
+      - run: psql -c "SELECT version()"
